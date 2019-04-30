@@ -1,7 +1,7 @@
 
 
 ## Cluster Status
-How to check the cluster status:
+#### How to check the cluster status:
 
 > oc exec -c elasticsearch <ES_POD_NAME> -- curl -s /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/health?h=status
 
@@ -18,7 +18,7 @@ Example:
 green
 ```
 ## Indices
-How to check the Indices status.
+#### How to check the Indices status.
 
 ```
 # oc exec -c elasticsearch logging-es-data-master-98ys8mq6-2-7rq9m -- $curl_es/_cat/indices?v\&bytes=m
@@ -31,4 +31,17 @@ green  open   .operations.2019.04.30                                            
 green  open   .searchguard                                                         DhoZ_64VRwy4M5nR9uwh1Q   1   1          5            1          0              0
 green  open   .operations.2019.04.26                                               Vf-3GiKFQQSegsMdiKbhUw   1   1     177121            0        316            158
 
+```
+
+#### How to add replica to Indices
+Run a PUT request with curl to change the replica settings on specific index.
+
+Example (Here, .kibana.xxxxx is our index to be replicated):
+```
+# oc exec -c elasticsearch logging-es-data-master-98ys8mq6-2-7rq9m -- curl -s --max-time 5 --key /etc/elasticsearch/secret/admin-key --cert /etc/elasticsearch/secret/admin-cert --cacert /etc/elasticsearch/secret/admin-ca -XPUT 'https://localhost:9200/.kibana.d033e22ae348aeb5660fc2140aec35850c4da997/_settings' -d '
+{
+  "index": {
+    "number_of_replicas" : 1
+  }
+}'
 ```
