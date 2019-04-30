@@ -1,7 +1,7 @@
 
 
 ## Cluster Status
-#### How to check the cluster status:
+#### How to check the cluster status
 
 > oc exec -c elasticsearch <ES_POD_NAME> -- curl -s /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/health?h=status
 
@@ -18,7 +18,7 @@ Example:
 green
 ```
 ## Indices
-#### How to check the Indices status.
+#### How to check the Indices status
 
 ```
 # oc exec -c elasticsearch logging-es-data-master-98ys8mq6-2-7rq9m -- $curl_es/_cat/indices?v\&bytes=m
