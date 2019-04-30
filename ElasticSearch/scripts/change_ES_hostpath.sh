@@ -24,7 +24,7 @@ fi
 }
 
 function usage() {
-printf "USAGE: ./$(basename $0) -p <OpenShift Username> -p <OpenShift password> -P <ES path>\n\n"
+printf "USAGE: ./$(basename $0) -u <OpenShift Username> -p <OpenShift password> -P <ES path>\n\n"
 }
 
 function login_OCP_cluster() {
