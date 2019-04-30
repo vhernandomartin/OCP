@@ -1,9 +1,8 @@
 
 
 ## Cluster Status
-#### How to check the cluster status
 
-> oc exec -c elasticsearch <ES_POD_NAME> -- curl -s /etc/elasticsearch/secret/admin-ca https://localhost:9200/_cat/health?h=status
+#### How to check the cluster status
 
 In order to simplify curl operations with ElasticSearch export the following variable to use curl with required ES certs and pointing to the required ES port.
 
